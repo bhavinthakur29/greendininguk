@@ -42,9 +42,9 @@ const Footer = () => {
                         <div className="footer-links-column">
                             <h4>Contact</h4>
                             <ul>
-                                <li>Email: hello.greendining@gmail.com</li>
-                                <li>Website: greendininguk.netlify.app</li>
-                                <li>Social: @green_dinning7</li>
+                                <li><strong>Email:</strong> hello.greendining@gmail.com</li>
+                                <li><strong>Phone:</strong> [coming soon...]</li>
+                                <li><strong>Location:</strong> England, United Kingdom</li>
                             </ul>
                         </div>
                     </div>
@@ -58,13 +58,16 @@ const Footer = () => {
                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
                             <FaTwitter />
                         </a>
-                        <a href="https://instagram.com/green_dinning7" target="_blank" rel="noopener noreferrer">
+                        <a href="https://instagram.com/green_dining7" target="_blank" rel="noopener noreferrer">
                             <FaInstagram />
                         </a>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                             <FaLinkedin />
                         </a>
                     </div>
+                    <p className='footer-copyright'>
+                        Designed, Developed, and Maintained by Bhavin Thakur
+                    </p>
                     <p className="footer-copyright">
                         &copy; {currentYear} GreenDining UK. All rights reserved.
                     </p>
