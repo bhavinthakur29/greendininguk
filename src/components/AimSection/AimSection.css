@@ -1,0 +1,152 @@
+.aim-section {
+    background-color: var(--white);
+}
+
+.aim-content {
+    display: flex;
+    gap: 50px;
+}
+
+.aim-text {
+    flex: 1;
+}
+
+.aim-goal {
+    margin-bottom: 40px;
+}
+
+.aim-goal h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.aim-quote {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--dark-green);
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.aim-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.aim-stat {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--light-green);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-percent {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.aim-benefits {
+    margin-bottom: 40px;
+}
+
+.aim-benefits h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.benefits-list {
+    list-style: none;
+}
+
+.benefits-list li {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.benefit-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-top: 5px;
+}
+
+.benefits-list h4 {
+    font-size: 1.2rem;
+    color: var(--dark-gray);
+    margin-bottom: 5px;
+}
+
+.aim-timeline {
+    flex: 1;
+}
+
+.aim-timeline h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--primary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -35px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.timeline-content {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-content h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 992px) {
+    .aim-content {
+        flex-direction: column;
+    }
+
+    .aim-stats {
+        flex-direction: column;
+    }
+}
