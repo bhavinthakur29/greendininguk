@@ -93,4 +93,31 @@ This repository includes utility batch files to help with development and setup:
 
 ## Contact
 
-For any questions or support, please open an issue on GitHub. 
+For any questions or support, please open an issue on GitHub.
+
+## Deployment
+
+### Netlify Deployment
+
+This project is configured for deployment on Netlify:
+
+1. **Connect to GitHub**: 
+   - Sign up for Netlify and connect your GitHub account
+   - Select the repository containing this project
+
+2. **Configure the Build Settings**:
+   - Build command: `bun run build`
+   - Publish directory: `dist`
+   - The `netlify.toml` file already contains the necessary configuration
+
+3. **Environment Variables**:
+   Add these in the Netlify dashboard under Site settings → Environment variables:
+   - No environment variables are required for basic functionality
+
+4. **Deploy**:
+   - Click 'Deploy site' in the Netlify dashboard
+   - Netlify will build and deploy your site automatically
+
+5. **Using Netlify Functions**:
+   The project is set up with Netlify Functions to handle backend APIs. When deployed,
+   API calls will automatically be routed to the serverless functions in the `netlify/functions` directory. 

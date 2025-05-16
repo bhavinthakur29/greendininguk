@@ -70,3 +70,6 @@ Desktop.ini
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+# Netlify
+.netlify
