@@ -1,13 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import CartItem from '../../components/CartItem/CartItem';
 import './Cart.css';
 
 const Cart = () => {
     const { cartItems, totalPrice, removeFromCart, updateQuantity } = useCart();
+    const navigate = useNavigate();
 
     const handleCheckout = () => {
-        console.log('Proceeding to checkout');
+        navigate('/checkout');
     };
 
     // Optionally, use removeFromCart and updateQuantity directly in Cart.jsx

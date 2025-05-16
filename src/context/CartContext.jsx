@@ -7,6 +7,7 @@ export const CartContext = createContext({
     addToCart: () => { },
     removeFromCart: () => { },
     updateQuantity: () => { },
+    clearCart: () => { },
     totalItems: 0,
     totalPrice: 0,
 });
@@ -66,11 +67,18 @@ export const CartProvider = ({ children }) => {
         }
     };
 
+    const clearCart = () => {
+        setCartItems([]);
+        localStorage.removeItem('cart');
+        toast.info('Cart has been cleared!');
+    };
+
     const cartContextValue = {
         cartItems,
         addToCart,
         removeFromCart,
         updateQuantity,
+        clearCart,
         totalItems: cartItems.reduce((total, item) => total + item.quantity, 0),
         totalPrice: cartItems.reduce((total, item) => total + item.price * item.quantity, 0),
     };

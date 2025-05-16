@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { FaShoppingCart, FaBars, FaTimes, FaLeaf, FaUserShield } from 'react-icons/fa';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { FaShoppingCart, FaBars, FaTimes, FaLeaf, FaUserShield, FaTachometerAlt, FaClipboardList, FaChartLine, FaBoxes } from 'react-icons/fa';
 import { CartContext } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import useMediaQuery from '../../hooks/useMediaQuery';
@@ -13,6 +13,7 @@ const Navbar = () => {
     const { totalItems } = useContext(CartContext);
     const { isAuthenticated, login, logout } = useAuth();
     const isDesktop = useMediaQuery('(min-width: 769px)');
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -28,6 +29,12 @@ const Navbar = () => {
         } else {
             setIsLoginModalOpen(true);
         }
+    };
+
+    const handleLogin = () => {
+        login();
+        setIsLoginModalOpen(false);
+        navigate('/admin/dashboard');
     };
 
     return (
@@ -64,18 +71,73 @@ const Navbar = () => {
                                 Contact
                             </NavLink>
                         </li>
+
+                        {!isDesktop && (
+                            <li className="nav-item admin-mobile-item">
+                                <button
+                                    className="mobile-admin-btn"
+                                    onClick={() => {
+                                        closeMenu();
+                                        handleAdminClick();
+                                    }}
+                                >
+                                    <FaUserShield className="admin-nav-icon" />
+                                    {isAuthenticated ? "Logout" : "Admin Login"}
+                                </button>
+                            </li>
+                        )}
+
+                        {!isDesktop && isAuthenticated && (
+                            <>
+                                <li className="nav-item admin-mobile-item">
+                                    <h3 className="admin-section-title">Admin Panel</h3>
+                                </li>
+                                <li className="nav-item admin-mobile-item">
+                                    <NavLink to="/admin/dashboard" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={closeMenu}>
+                                        <FaTachometerAlt className="admin-nav-icon" />
+                                        Dashboard
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item admin-mobile-item">
+                                    <NavLink to="/admin/products" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={closeMenu}>
+                                        <FaBoxes className="admin-nav-icon" />
+                                        Products
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item admin-mobile-item">
+                                    <NavLink to="/admin/orders" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={closeMenu}>
+                                        <FaClipboardList className="admin-nav-icon" />
+                                        Orders
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item admin-mobile-item">
+                                    <NavLink to="/admin/analytics" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={closeMenu}>
+                                        <FaChartLine className="admin-nav-icon" />
+                                        Analytics
+                                    </NavLink>
+                                </li>
+                            </>
+                        )}
                     </ul>
 
                     <div className="navbar-right">
                         {isDesktop && (
-                            <button
-                                className="admin-login-btn"
-                                onClick={handleAdminClick}
-                                title={isAuthenticated ? "Logout" : "Admin Login"}
-                            >
-                                <FaUserShield className="admin-icon" />
-                                <span>{isAuthenticated ? "Logout" : "Admin"}</span>
-                            </button>
+                            <>
+                                {isAuthenticated && (
+                                    <Link to="/admin/dashboard" className="dashboard-link" title="Admin Dashboard">
+                                        <FaTachometerAlt className="dashboard-icon" />
+                                        <span>Dashboard</span>
+                                    </Link>
+                                )}
+                                <button
+                                    className="admin-login-btn"
+                                    onClick={handleAdminClick}
+                                    title={isAuthenticated ? "Logout" : "Admin Login"}
+                                >
+                                    <FaUserShield className="admin-icon" />
+                                    <span>{isAuthenticated ? "Logout" : "Admin"}</span>
+                                </button>
+                            </>
                         )}
                         <Link to="/cart" className="cart-icon-link">
                             <FaShoppingCart className="cart-icon" />
@@ -88,7 +150,7 @@ const Navbar = () => {
             <LoginModal
                 isOpen={isLoginModalOpen}
                 onClose={() => setIsLoginModalOpen(false)}
-                onLogin={login}
+                onLogin={handleLogin}
             />
         </>
     );

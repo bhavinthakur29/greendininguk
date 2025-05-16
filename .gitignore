@@ -7,14 +7,38 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
-dist
-dist-ssr
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+/build
+/dist
+/dist-ssr
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 *.local
+
+# Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+!server/db/greendining.db
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
@@ -22,3 +46,27 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Temporary files
+.temp
+.tmp
+.cache
+*.bak
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Build tool specific
+.eslintcache
+.stylelintcache
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

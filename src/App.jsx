@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -12,9 +12,20 @@ import ProductDetails from './pages/Products/ProductDetails';
 import Contact from './pages/Contact/Contact';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import OrderConfirmation from './pages/OrderConfirmation/OrderConfirmation';
+import NotFound from './pages/NotFound/NotFound';
+import BackToTop from './components/BackToTop/BackToTop';
 import useScrollToTop from './hooks/useScrollToTop';
+
+// Admin pages
 import Dashboard from './admin/pages/Dashboard/Dashboard';
+import ProductsManagement from './admin/pages/Products/ProductsManagement';
+import Analytics from './admin/pages/Analytics/Analytics';
+import OrdersManagement from './admin/pages/Orders/OrdersManagement';
+import AdminLogin from './admin/pages/Login/AdminLogin';
+import CustomersManagement from './admin/pages/Customers/CustomersManagement';
+import SettingsPage from './admin/pages/Settings/SettingsPage';
+import HelpPage from './admin/pages/Help/HelpPage';
 
 // Context
 import { CartProvider } from './context/CartContext';
@@ -22,6 +33,8 @@ import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
     useScrollToTop();
+    const location = useLocation();
+    const isAdminRoute = location.pathname.startsWith('/admin');
 
     return (
         <AuthProvider>
@@ -40,9 +53,10 @@ const App = () => {
                         theme="light"
                         style={{ zIndex: 9999 }}
                     />
-                    <Navbar />
+                    {!isAdminRoute && <Navbar />}
                     <main>
                         <Routes>
+                            {/* Client Routes */}
                             <Route path="/" element={<Home />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/products" element={<Products />} />
@@ -50,11 +64,25 @@ const App = () => {
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/cart" element={<Cart />} />
                             <Route path="/checkout" element={<Checkout />} />
+                            <Route path="/order-confirmation" element={<OrderConfirmation />} />
+
+                            {/* Admin Routes */}
+                            <Route path="/admin/login" element={<AdminLogin />} />
+                            <Route path="/admin" element={<Dashboard />} />
                             <Route path="/admin/dashboard" element={<Dashboard />} />
+                            <Route path="/admin/products" element={<ProductsManagement />} />
+                            <Route path="/admin/orders" element={<OrdersManagement />} />
+                            <Route path="/admin/customers" element={<CustomersManagement />} />
+                            <Route path="/admin/analytics" element={<Analytics />} />
+                            <Route path="/admin/settings" element={<SettingsPage />} />
+                            <Route path="/admin/help" element={<HelpPage />} />
+
+                            {/* 404 Route - Must be last */}
+                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </main>
-                    <Footer />
-                    <ScrollToTop />
+                    {!isAdminRoute && <Footer />}
+                    {!isAdminRoute && <BackToTop />}
                 </div>
             </CartProvider>
         </AuthProvider>

@@ -224,6 +224,70 @@
     font-size: 1.2rem;
 }
 
+.dashboard-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #2196F3;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.dashboard-link:hover {
+    background-color: #0d8bf2;
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+.dashboard-icon {
+    font-size: 1.2rem;
+}
+
+.admin-mobile-item {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.admin-section-title {
+    color: var(--primary-color);
+    margin: 1.5rem 0 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.admin-nav-icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.mobile-admin-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+    cursor: pointer;
+    text-align: left;
+}
+
+.mobile-admin-btn:hover {
+    color: var(--primary-color);
+}
+
 .admin-dashboard-link {
     display: flex;
     align-items: center;
